@@ -236,7 +236,7 @@ pub struct GetBlockStatsResult {
     #[serde(rename = "blockhash")]
     pub block_hash: bitcoin::BlockHash,
     #[serde(rename = "feerate_percentiles")]
-    pub fee_rate_percentiles: [u32; 5],
+    pub fee_rate_percentiles: FeeRatePercentiles,
     pub height: u64,
     pub ins: usize,
     #[serde(rename = "maxfee")]
@@ -274,6 +274,15 @@ pub struct GetBlockStatsResult {
     pub txs: usize,
     pub utxo_increase: i32,
     pub utxo_size_inc: i32,
+}
+
+#[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
+pub struct FeeRatePercentiles {
+    pub fr_10th: u32,
+    pub fr_25th: u32,
+    pub fr_50th: u32,
+    pub fr_75th: u32,
+    pub fr_90th: u32,
 }
 
 #[derive(Clone, PartialEq, Debug, Deserialize, Serialize)]
