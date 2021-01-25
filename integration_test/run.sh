@@ -9,6 +9,7 @@ mkdir -p ${TESTDIR}/1 ${TESTDIR}/2
 killall -9 bitcoind
 
 bitcoind -regtest \
+    -txindex=1 \
     -datadir=${TESTDIR}/1 \
     -port=12348 \
     -server=0 \
