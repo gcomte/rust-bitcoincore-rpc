@@ -443,6 +443,14 @@ pub trait RpcApi: Sized {
         self.call("getblockstats", &[height.into()])
     }
 
+    fn get_block_stats_fields(&self, height: u64, fields: &Vec<bitcoincore_rpc_json::BlockStatsFields>) -> Result<json::GetBlockStatsResultPartial> {
+        let fields: Vec<&str> = fields.iter()
+            .map(|field| field.get_rpc_keyword())
+            .collect();
+
+        self.call("getblockstats", &[height.into(), fields.into()])
+    }
+
     fn get_raw_transaction(
         &self,
         txid: &bitcoin::Txid,
