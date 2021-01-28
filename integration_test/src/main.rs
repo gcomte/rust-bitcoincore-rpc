@@ -320,7 +320,7 @@ fn test_get_block_stats(cl: &Client) {
 }
 
 fn test_get_block_stats_partial(cl: &Client) {
-    use bitcoincore_rpc::bitcoincore_rpc_json::BlockStatsFields;
+    use json::BlockStatsFields;
     let tip = cl.get_block_count().unwrap();
     let tip_hash = cl.get_best_block_hash().unwrap();
     let header = cl.get_block_header(&tip_hash).unwrap();
