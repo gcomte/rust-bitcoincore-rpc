@@ -324,7 +324,7 @@ fn test_get_block_stats_fields(cl: &Client) {
     let tip = cl.get_block_count().unwrap();
     let tip_hash = cl.get_best_block_hash().unwrap();
     let header = cl.get_block_header(&tip_hash).unwrap();
-    let fields = vec![BlockStatsFields::BlockHash, BlockStatsFields::Height, BlockStatsFields::TotalFee];
+    let fields = [BlockStatsFields::BlockHash, BlockStatsFields::Height, BlockStatsFields::TotalFee];
     let stats = cl.get_block_stats_fields(tip, &fields).unwrap();
     assert_eq!(header.block_hash(), stats.block_hash.unwrap());
     assert_eq!(tip, stats.height.unwrap());
