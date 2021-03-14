@@ -315,7 +315,7 @@ fn test_get_block_stats(cl: &Client) {
     let header = cl.get_block_header(&tip_hash).unwrap();
     let stats = cl.get_block_stats(tip).unwrap();
     assert_eq!(header.block_hash(), stats.block_hash);
-    assert_eq!(header.time, stats.time);
+    assert_eq!(header.time, stats.time as u32);
     assert_eq!(tip, stats.height);
 }
 
