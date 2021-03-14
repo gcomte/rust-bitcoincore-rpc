@@ -248,7 +248,7 @@ pub struct GetBlockStatsResult {
     #[serde(rename = "medianfee", with = "bitcoin::util::amount::serde::as_sat")]
     pub median_fee: Amount,
     #[serde(rename = "mediantime")]
-    pub median_time: u32,
+    pub median_time: u64,
     #[serde(rename = "mediantxsize")]
     pub median_tx_size: u32,
     #[serde(rename = "minfee", with = "bitcoin::util::amount::serde::as_sat")]
@@ -266,7 +266,7 @@ pub struct GetBlockStatsResult {
     pub sw_total_weight: usize,
     #[serde(rename = "swtxs")]
     pub sw_txs: usize,
-    pub time: u32,
+    pub time: u64,
     #[serde (with = "bitcoin::util::amount::serde::as_sat")]
     pub total_out: Amount,
     pub total_size: usize,
@@ -348,7 +348,7 @@ pub struct GetBlockStatsResultPartial {
         rename = "mediantime",
         skip_serializing_if = "Option::is_none"
     )]
-    pub median_time: Option<u32>,
+    pub median_time: Option<u64>,
     #[serde(
         default,
         rename = "mediantxsize",
@@ -402,7 +402,7 @@ pub struct GetBlockStatsResultPartial {
     )]
     pub sw_txs: Option<usize>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub time: Option<u32>,
+    pub time: Option<u64>,
     #[serde(
         default,
         with = "bitcoin::util::amount::serde::as_sat::opt",
