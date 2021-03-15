@@ -9,7 +9,6 @@ mkdir -p ${TESTDIR}/1 ${TESTDIR}/2
 killall -9 bitcoind
 
 bitcoind -regtest \
-    -txindex=1 \
     -datadir=${TESTDIR}/1 \
     -port=12348 \
     -server=0 \
@@ -34,6 +33,7 @@ bitcoind -regtest $BLOCKFILTERARG $FALLBACKFEEARG \
     -connect=127.0.0.1:12348 \
     -rpcport=12349 \
     -server=1 \
+    -txindex=1 \
     -printtoconsole=0 &
 PID2=$!
 
